@@ -10,11 +10,10 @@ export class ItemService {
   itemsCollection: AngularFirestoreCollection<Item>;
   items: Observable<Item[]>;
 
-  constructor(public afs: AngularFirestore) {
-    this.items = this.afs.collection('items').valueChanges();
-  }
+  constructor(public afs: AngularFirestore) {}
 
   getItems() {
+    this.items = this.afs.collection('items').valueChanges();
     return this.items;
   }
 }
