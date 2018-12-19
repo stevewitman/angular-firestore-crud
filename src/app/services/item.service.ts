@@ -15,6 +15,9 @@ export class ItemService {
 
   getItems() {
     // this.items = this.afs.collection('items').valueChanges();
+
+    this.itemsCollection = this.afs.collection('items');
+
     this.items = this.afs.collection('items').snapshotChanges().pipe(map(changes => {
       return changes.map(a => {
         const data = a.payload.doc.data() as Item;
@@ -24,4 +27,9 @@ export class ItemService {
     }));
     return this.items;
   }
+
+  addItem(item: Item) {
+    this.itemsCollection.add(item);
+  }
+
 }
