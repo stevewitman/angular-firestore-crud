@@ -1,6 +1,26 @@
 <div *ngIf="items?.length > 0; else noItems">
   <ul class="collection">
-    <li (dblclick)="deleteItem($event, item)" *ngFor="let item of items" class="collection-item"><strong>{{ item.id }}: {{ item.description }}</strong></li>
+    <li *ngFor="let item of items" class="collection-item">
+      <strong>{{ item.title }}:</strong> {{ item.description }}
+      <a href="#" class="secondary-content">
+        <i *ngIf="!(editState && itemToEdit.id == item.id)" (click)="editItem($event, item)" class="fa fa-pencil"></i>
+        <i *ngIf="editState && itemToEdit.id == item.id" (click)="clearState()" class="fa fa-compress"></i>
+      </a>
+      <div *ngIf="editState && itemToEdit.id == item.id">
+        <form (ngSubmit)="updateItem(item)" class="col s6">
+            <div class="row">
+              <div class="input-field col s6">
+                <input type="text" placeholder="Add Title" [(ngModel)]="item.title" name="title">
+              </div>
+              <div class="input-field col s6">
+                <input type="text" placeholder="Add Description" [(ngModel)]="item.description" name="description">
+              </div>
+            </div>
+            <input type="submit" value="Update Item" class="btn orange">
+            &nbsp;<button (click)="deleteItem($event, item)" class="btn red">Delete Item</button>
+          </form>
+      </div>
+    </li>
   </ul>
 </div>
 

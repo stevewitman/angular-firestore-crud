@@ -78,7 +78,17 @@ see the code from Brad's repository, deleteItem(item: Item){
     this.itemDoc.delete();
   }  - this should work
 
-  
+  [3 of 3] https://www.youtube.com/watch?v=onVp-8BYUSM
 
+  comments ...
+  updateItem(item: Item){
+    this.itemDoc = this.afs.doc(`items/${item.id}`);
+    delete item.id;
+    this.itemDoc.update(item);
+ }
+
+ 15:52 Don't change the import to evironment.prod. Angular will see which environment you are using and naming that file to environment.ts . That means you can leave the import and it will work when you're using prod and dev while you're using another firebase project﻿
+
+ 
 
 
