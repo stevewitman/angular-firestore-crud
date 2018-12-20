@@ -1,3 +1,5 @@
+DEMO: tidy-brothers.surge.sh (permission disabled ... owner reset db rules to run)
+
 Tutorial from ...
 [1 of 3] https://www.youtube.com/watch?v=gUmItHaVL2w
 did all these notes from comments ...
@@ -89,6 +91,6 @@ see the code from Brad's repository, deleteItem(item: Item){
 
  15:52 Don't change the import to evironment.prod. Angular will see which environment you are using and naming that file to environment.ts . That means you can leave the import and it will work when you're using prod and dev while you're using another firebase project﻿
 
- 
+
 
 
